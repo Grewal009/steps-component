@@ -20,6 +20,17 @@ const App = () => {
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry.
         </p>
+
+        {/**Buttons */}
+        <div className="w-[300px] bg-pink-100">
+          <button className="px-2 py-2 text-white bg-purple-500 hover:bg-purple-700 rounded-lg">
+            Previous
+          </button>
+
+          <button className="px-2 py-2 text-white bg-purple-500 hover:bg-purple-700 rounded-lg">
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );
