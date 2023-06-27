@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { message } from "./constants";
-import Button from "./Button";
 
 const App = () => {
   const [step, setStep] = useState(1);
@@ -12,8 +11,7 @@ const App = () => {
   function handleNext() {
     if (step < 3) setStep((s) => s + 1);
   }
-  const styleButton =
-    "w-30 px-2 py-2 text-white font-medium bg-purple-500 hover:bg-purple-700 rounded-lg";
+
   return (
     <div className="w-full h-[300px] flex justify-center items-center">
       <div className="w-[300px] h-auto m-auto flex flex-col items-center border-[1px] bg-slate-50 shadow-md shadow-slate-300 rounded-md">
@@ -56,12 +54,19 @@ const App = () => {
 
         {/**Buttons */}
         <div className="px-2 my-5 w-[300px] flex justify-between ">
-          <Button styleBtn={styleButton} handleClick={handlePrevious}>
-            <span>👈</span>&nbsp;Previous
-          </Button>
-          <Button styleBtn={styleButton} handleClick={handleNext}>
-            Next&nbsp;<span>👉</span>
-          </Button>
+          <button
+            onClick={handlePrevious}
+            className="w-24 px-2 py-2 text-white font-medium bg-purple-500 hover:bg-purple-700 rounded-lg"
+          >
+            Previous
+          </button>
+
+          <button
+            onClick={handleNext}
+            className="w-24 px-2 py-2 text-white font-medium bg-purple-500 hover:bg-purple-700 rounded-lg"
+          >
+            Next
+          </button>
         </div>
       </div>
     </div>
