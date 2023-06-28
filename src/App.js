@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { message } from "./constants";
 import Button from "./Button";
+import Message from "./Message";
 
 const App = () => {
   const [step, setStep] = useState(1);
@@ -49,10 +50,8 @@ const App = () => {
         </div>
 
         {/**Message */}
-        <p className="mx-2 my-5">
-          <span className="text-lg font-medium">Step{step}: </span>
-          {message[step - 1]}.
-        </p>
+
+        <Message step={step}>{message[step - 1]}</Message>
 
         {/**Buttons */}
         <div className="px-2 my-5 w-[300px] flex justify-between ">
