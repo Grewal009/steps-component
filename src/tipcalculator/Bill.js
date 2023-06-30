@@ -2,7 +2,7 @@ import Percentage from "./Percentage";
 import { useState } from "react";
 
 const Bill = () => {
-  const [bill, setBill] = useState(0);
+  const [bill, setBill] = useState("");
   const [userPercentage, setUserPercentage] = useState(0);
   const [friendPercentage, setFriendPercentage] = useState(0);
 
@@ -28,12 +28,19 @@ const Bill = () => {
     setFriendPercentage(Number(e.target.value));
   }
 
+  function handleReset() {
+    setBill(0);
+    setUserPercentage(0);
+    setFriendPercentage(0);
+  }
+
   return (
     <div className="m-2 p-2 bg-slate-200">
       <label>
         How much was the bill?{" "}
         <input
           type="text"
+          placeholder="Enter bill amount"
           value={bill}
           onChange={(e) => handleBill(e)}
           className="bg-slate-100"
@@ -46,9 +53,19 @@ const Bill = () => {
         <label>How did your friend like the service? </label>
       </Percentage>
 
-      <p>
-        You pay ${totalAmount} (${bill} + ${totalTip} tip)
-      </p>
+      {bill > 0 && (
+        <>
+          <p>
+            You pay ${totalAmount} (${bill} + ${totalTip} tip)
+          </p>
+          <button
+            onClick={handleReset}
+            className="bg-slate-500 px-2 my-1 rounded-lg hover:bg-slate-400 text-slate-300 hover:text-slate-800"
+          >
+            Reset
+          </button>
+        </>
+      )}
     </div>
   );
 };
