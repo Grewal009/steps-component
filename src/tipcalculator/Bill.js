@@ -6,17 +6,26 @@ const Bill = () => {
   const [userPercentage, setUserPercentage] = useState(0);
   const [friendPercentage, setFriendPercentage] = useState(0);
 
+  const userTip = ((bill / 2) * userPercentage) / 100;
+  console.log(userTip);
+
+  const friendTip = ((bill / 2) * friendPercentage) / 100;
+  console.log(friendTip);
+
+  const totalTip = userTip + friendTip;
+  const totalAmount = bill + userTip + friendTip;
+
   function handleBill(e) {
-    setBill(e.target.value);
+    setBill(Number(e.target.value));
   }
   console.log("bill-> ", bill);
 
   function handleUserPercent(e) {
-    setUserPercentage(e.target.value);
+    setUserPercentage(Number(e.target.value));
   }
 
   function handleFriendPercent(e) {
-    setFriendPercentage(e.target.value);
+    setFriendPercentage(Number(e.target.value));
   }
 
   return (
@@ -36,6 +45,10 @@ const Bill = () => {
       <Percentage value={friendPercentage} handlePercent={handleFriendPercent}>
         <label>How did your friend like the service? </label>
       </Percentage>
+
+      <p>
+        You pay ${totalAmount} (${bill} + ${totalTip} tip)
+      </p>
     </div>
   );
 };
